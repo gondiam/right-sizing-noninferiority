@@ -22,9 +22,8 @@ HYPOTHESES = {
     "H2 quantization: 4B 4-bit vs fp16": ("4b-fp16", "4b-4bit", 0.02),
     "H3 cascade: 4B then 8B vs 8B": ("8b-4bit", "cascade", 0.02),
 }
-GRID = [round(0.30 + 0.05 * i, 2) for i in range(15)]  # 0.30 ... 1.00
 SLACK = 0.01  # the cascade may lose at most 1 point to the 8B on dev
-THRESHOLD: float | None = None  # fixed from dev before the test run; see PREREGISTRATION.md
+THRESHOLD: float | None = 0.996  # from `analyze.py dev`, fixed before the test run
 
 
 def load(split: str, config: str) -> tuple[np.ndarray, np.ndarray]:
@@ -41,8 +40,11 @@ def cascade(conf: np.ndarray, small: np.ndarray, large: np.ndarray, t: float) ->
 
 
 def choose_threshold(conf: np.ndarray, small: np.ndarray, large: np.ndarray) -> float:
-    """Lowest threshold (fewest large-model calls) within SLACK of the large model on dev."""
-    for t in GRID:
+    """Lowest threshold (fewest large-model calls) within SLACK of the large model on dev.
+
+    Candidates are the 0%, 5%, ..., 95% quantiles of the small model's confidence.
+    """
+    for t in np.quantile(conf, np.arange(0, 1, 0.05)).round(4).tolist():
         if cascade(conf, small, large, t).mean() >= large.mean() - SLACK:
             return t
     return 1.01  # always escalate
@@ -109,8 +111,8 @@ def selftest() -> None:
     conf = np.array([0.9, 0.9, 0.4, 0.4])
     small, large = np.array([1, 0, 0, 0], bool), np.array([1, 1, 1, 0], bool)
     assert cascade(conf, small, large, 0.5).tolist() == [True, False, True, False]
-    assert choose_threshold(conf, small, large) == 0.95  # only full escalation gets within 1 point
-    assert choose_threshold(conf, large, large) == 0.30  # equal models: never escalate
+    assert choose_threshold(conf, small, large) == 1.01  # only full escalation gets within 1 point
+    assert choose_threshold(conf, large, large) == 0.4  # equal models: never escalate
     assert abs(power(982, 0.04, 0.2) - 0.80) < 0.005
     print("selftest passed")
 

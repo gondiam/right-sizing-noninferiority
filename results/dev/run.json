@@ -1,0 +1,48 @@
+{
+ "commit": "7a7d8b2f9e3f5c4a2f06721dcd848bb3f81c4e7d",
+ "split": "dev",
+ "gpu": "Tesla T4",
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.22.1",
+  "bitsandbytes": "0.50.2"
+ },
+ "configs": {
+  "1.7b-4bit": {
+   "model": "Qwen/Qwen3-1.7B",
+   "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+   "items": 500,
+   "accuracy": 0.412,
+   "seconds": 76.7,
+   "peak_gpu_gb": 3.34,
+   "example_prompt": "<|im_start|>user\nThe following is a multiple-choice question from a medical licensing exam. Answer with the letter of the correct option.\n\nA 3-month-old baby died suddenly at night while asleep. His mother noticed that he had died only after she awoke in the morning. No cause of death was determined based on the autopsy. Which of the following precautions could have prevented the death of the baby?\n\nA. Placing the infant in a supine position on a firm mattress while sleeping\nB. Keeping the infant covered and maintaining a high room temperature\nC. Application of a device to maintain the sleeping position\nD. Avoiding pacifier use during sleep<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nAnswer:"
+  },
+  "4b-4bit": {
+   "model": "Qwen/Qwen3-4B",
+   "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+   "items": 500,
+   "accuracy": 0.566,
+   "seconds": 149.0,
+   "peak_gpu_gb": 4.93,
+   "example_prompt": "<|im_start|>user\nThe following is a multiple-choice question from a medical licensing exam. Answer with the letter of the correct option.\n\nA 3-month-old baby died suddenly at night while asleep. His mother noticed that he had died only after she awoke in the morning. No cause of death was determined based on the autopsy. Which of the following precautions could have prevented the death of the baby?\n\nA. Placing the infant in a supine position on a firm mattress while sleeping\nB. Keeping the infant covered and maintaining a high room temperature\nC. Application of a device to maintain the sleeping position\nD. Avoiding pacifier use during sleep<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nAnswer:"
+  },
+  "4b-fp16": {
+   "model": "Qwen/Qwen3-4B",
+   "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+   "items": 500,
+   "accuracy": 0.578,
+   "seconds": 75.6,
+   "peak_gpu_gb": 10.12,
+   "example_prompt": "<|im_start|>user\nThe following is a multiple-choice question from a medical licensing exam. Answer with the letter of the correct option.\n\nA 3-month-old baby died suddenly at night while asleep. His mother noticed that he had died only after she awoke in the morning. No cause of death was determined based on the autopsy. Which of the following precautions could have prevented the death of the baby?\n\nA. Placing the infant in a supine position on a firm mattress while sleeping\nB. Keeping the infant covered and maintaining a high room temperature\nC. Application of a device to maintain the sleeping position\nD. Avoiding pacifier use during sleep<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nAnswer:"
+  },
+  "8b-4bit": {
+   "model": "Qwen/Qwen3-8B",
+   "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+   "items": 500,
+   "accuracy": 0.63,
+   "seconds": 230.0,
+   "peak_gpu_gb": 8.5,
+   "example_prompt": "<|im_start|>user\nThe following is a multiple-choice question from a medical licensing exam. Answer with the letter of the correct option.\n\nA 3-month-old baby died suddenly at night while asleep. His mother noticed that he had died only after she awoke in the morning. No cause of death was determined based on the autopsy. Which of the following precautions could have prevented the death of the baby?\n\nA. Placing the infant in a supine position on a firm mattress while sleeping\nB. Keeping the infant covered and maintaining a high room temperature\nC. Application of a device to maintain the sleeping position\nD. Avoiding pacifier use during sleep<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nAnswer:"
+  }
+ }
+}

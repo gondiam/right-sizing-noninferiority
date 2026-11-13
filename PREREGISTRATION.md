@@ -1,8 +1,8 @@
 # Preregistration
 
-**Status: DRAFT.** The lines marked TODO are filled from the dev run. This file is then
-committed and pushed before any model is scored on the test set, and the git history is
-the timestamp. Any later change is listed under Deviations, with its reason.
+**Status: DRAFT, pending the author's sign-off on the margins.** The dev run is done
+(`results/dev/`). This file is committed and pushed before any model is scored on the
+test set, and the git history is the timestamp. Any later change is listed under Deviations, with its reason.
 
 ## Question
 
@@ -26,8 +26,12 @@ nothing differs from anything. The burden of proof is on the cheaper model.
   reason before answering; accuracies are for this protocol only.
 - Cascade: answer with the 4B (4-bit); when the probability of its chosen letter is below
   a threshold, use the 8B's answer instead. Threshold rule, applied to dev only: the
-  lowest value in 0.30, 0.35, ..., 1.00 whose cascade accuracy is within 1 point of the
-  8B's. Threshold: TODO.
+  lowest of the 0%, 5%, ..., 95% quantiles of the 4B's dev confidence whose cascade
+  accuracy is within 1 point of the 8B's. Threshold: **0.996**, which sends 50% of dev
+  items to the 8B (cascade 62.2%, 8B 63.0% on dev). The first draft of this rule used a
+  fixed grid from 0.30 to 1.00 in steps of 0.05. The 4B is overconfident (45% of dev
+  items fall between 0.95 and 1.00), so that grid jumped from 30% to 75% of items sent
+  to the 8B. The grid was changed to quantiles after seeing dev and before any test run.
 - Margins, written before the dev run and not changed afterwards:
   - H1, 4 points. The 4B has half the parameters of the 8B. For about half the memory
     and compute, a team would accept at most one more wrong answer in 25 questions.
@@ -68,10 +72,19 @@ The test set is fixed at 1,273 items. With no true difference, the items needed 
 | 30% | 5,888 | 1,472 |
 
 Power on the 1,273 test items with the discordance measured on dev, assuming no true
-difference: H1 TODO, H2 TODO, H3 TODO. If the cheaper model is truly worse, power is
+difference:
+
+| Hypothesis | Dev discordance | Dev difference | Power |
+|---|---|---|---|
+| H1 size | 26.4% | -6.4 points | 0.79 |
+| H2 quantization | 12.0% | -1.2 points | 0.54 |
+| H3 cascade | 8.4% | -0.8 points | 0.69 |
+
+These are upper bounds. On dev the 4B is 6.4 points below the 8B (56.6% against 63.0%),
+beyond the 4-point margin, so H1 is expected to fail. The cascade threshold was picked on
+the same dev items, so its dev difference is optimistic. If the cheaper model is truly worse, power is
 lower: with a true loss of 1 point and 20% discordance, H1 would need about 1,745 items.
-A hypothesis with power below 0.50 is still run and reported, and is labelled
-underpowered here, before the result is known.
+No hypothesis reaches 0.80 power. All three are run and reported whatever the outcome.
 
 ## Secondary (reported, not used for the main claims)
 
