@@ -1,6 +1,6 @@
 # Preregistration
 
-**Status: DRAFT, pending the author's sign-off on the margins.** The dev run is done
+**Status: SIGNED on 2026-11-18, before any test-set scoring.** The dev run is done
 (`results/dev/`). This file is committed and pushed before any model is scored on the
 test set, and the git history is the timestamp. Any later change is listed under Deviations, with its reason.
 
