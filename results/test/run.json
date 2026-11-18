@@ -1,0 +1,48 @@
+{
+ "commit": "76b0b916f55a3b5cf702e00cd8624d8977173cc9",
+ "split": "test",
+ "gpu": "Tesla T4",
+ "versions": {
+  "torch": "2.11.0+cu130",
+  "transformers": "5.22.1",
+  "bitsandbytes": "0.50.2"
+ },
+ "configs": {
+  "1.7b-4bit": {
+   "model": "Qwen/Qwen3-1.7B",
+   "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+   "items": 1273,
+   "accuracy": 0.40377062058130403,
+   "seconds": 201.1,
+   "peak_gpu_gb": 4.67,
+   "example_prompt": "<|im_start|>user\nThe following is a multiple-choice question from a medical licensing exam. Answer with the letter of the correct option.\n\nA junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?\n\nA. Disclose the error to the patient and put it in the operative report\nB. Tell the attending that he cannot fail to disclose this mistake\nC. Report the physician to the ethics committee\nD. Refuse to dictate the operative report<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nAnswer:"
+  },
+  "4b-4bit": {
+   "model": "Qwen/Qwen3-4B",
+   "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+   "items": 1273,
+   "accuracy": 0.5459544383346425,
+   "seconds": 383.6,
+   "peak_gpu_gb": 6.96,
+   "example_prompt": "<|im_start|>user\nThe following is a multiple-choice question from a medical licensing exam. Answer with the letter of the correct option.\n\nA junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?\n\nA. Disclose the error to the patient and put it in the operative report\nB. Tell the attending that he cannot fail to disclose this mistake\nC. Report the physician to the ethics committee\nD. Refuse to dictate the operative report<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nAnswer:"
+  },
+  "4b-fp16": {
+   "model": "Qwen/Qwen3-4B",
+   "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+   "items": 1273,
+   "accuracy": 0.5789473684210527,
+   "seconds": 195.5,
+   "peak_gpu_gb": 11.57,
+   "example_prompt": "<|im_start|>user\nThe following is a multiple-choice question from a medical licensing exam. Answer with the letter of the correct option.\n\nA junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?\n\nA. Disclose the error to the patient and put it in the operative report\nB. Tell the attending that he cannot fail to disclose this mistake\nC. Report the physician to the ethics committee\nD. Refuse to dictate the operative report<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nAnswer:"
+  },
+  "8b-4bit": {
+   "model": "Qwen/Qwen3-8B",
+   "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+   "items": 1273,
+   "accuracy": 0.6378633150039277,
+   "seconds": 593.5,
+   "peak_gpu_gb": 10.59,
+   "example_prompt": "<|im_start|>user\nThe following is a multiple-choice question from a medical licensing exam. Answer with the letter of the correct option.\n\nA junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?\n\nA. Disclose the error to the patient and put it in the operative report\nB. Tell the attending that he cannot fail to disclose this mistake\nC. Report the physician to the ethics committee\nD. Refuse to dictate the operative report<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nAnswer:"
+  }
+ }
+}
